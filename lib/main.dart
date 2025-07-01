@@ -1,23 +1,22 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 import 'dart:math';
-
+import 'package:word_generator/word_generator.dart';
 import 'names.dart';
 
 void main() {
-  print(" ------------------- Task 1 -------------------");
+  print("\n ------------------- Task 1 -------------------");
   runTask1();
-  // print(" ------------------- Task 2 -------------------");
-  // runTask2();
-  // print(" ------------------- Task 3 -------------------");
-  // runTask3();
+  print("\n ------------------- Task 2 -------------------");
+  runTask2();
+  print("\n ------------------- Task 3 -------------------");
+  runTask3();
 }
 
 void runTask1() {
   List<int> numbers = List.generate(101, (index) => Random().nextInt(101));
   print("\nМасив випадкових чисел: $numbers");
 
-  final nthNum = numbers[64];
-  print("\n65-й елемент: $nthNum");
+  print("\n65-й елемент: ${numbers[64]}");
 
   numbers
     ..insert(49, 1000000000)
@@ -40,8 +39,7 @@ void runTask1() {
       temp.add(element);
     }
   }
-  final lengthMultipleTwo = temp.length;
-  print("Кількість елементів, що діляться на 2: $lengthMultipleTwo");
+  print("Кількість елементів, що діляться на 2: ${temp.length}");
 }
 
 void runTask2() {
@@ -49,27 +47,44 @@ void runTask2() {
   final uniqueNames2 = Set.from(ukrainianNames2);
 
   final intersectionNames = uniqueNames1.intersection(uniqueNames2);
-  final intersectionNamesCount = intersectionNames.length;
-  print("\nКількість спільних імен з двох списків: $intersectionNamesCount");
+  print(
+    "\nКількість спільних імен з двох списків: ${intersectionNames.length}",
+  );
 
   final uniqueUkrainianNames1 = uniqueNames1.difference(uniqueNames2);
-  final uniqueUkrainianNames1Count = uniqueUkrainianNames1.length;
   print(
-    "\nУнікальні імена від ChatGPT: $uniqueUkrainianNames1 -- всього $uniqueUkrainianNames1Count",
+    "\nУнікальні імена від ChatGPT: $uniqueUkrainianNames1 -- всього ${uniqueUkrainianNames1.length}",
   );
 
   final uniqueUkrainianNames2 = uniqueNames2.difference(uniqueNames1);
-  final uniqueUkrainianNames2Count = uniqueUkrainianNames2.length;
   print(
-    "\nУнікальні імена від Gemini: $uniqueUkrainianNames2 -- всього $uniqueUkrainianNames2Count",
+    "\nУнікальні імена від Gemini: $uniqueUkrainianNames2 -- всього ${uniqueUkrainianNames2.length}",
   );
 
   print("\nНе сходиться 😡 - роблю перевірку:");
-  final uniqueNames1Count = uniqueNames1.length;
-  print("Унікальних імен зі списку ChatGPT: $uniqueNames1Count");
-  final uniqueNames2Count = uniqueNames2.length;
-  print("Унікальних імен зі списку Gemini: $uniqueNames2Count");
+  print("Унікальних імен зі списку ChatGPT: ${uniqueNames1.length}");
+  print("Унікальних імен зі списку Gemini: ${uniqueNames2.length}");
   print("\nВиходить що ChatGPT надав 50 імен, але зробив одне повторення 😐");
 }
 
-void runTask3() {}
+void runTask3() {
+  final wordGenerator = WordGenerator();
+  List<String> nounsList = wordGenerator.randomNouns(50);
+
+  Map<String, int> nounsMap = {};
+  for (final element in nounsList) {
+    nounsMap.addEntries({element: element.length}.entries);
+  }
+  // print(nounsMap);
+
+  Map<String, int> tempNouns = {};
+  for (final entry in nounsMap.entries) {
+    if (entry.value % 2 == 0) {
+      tempNouns.addEntries({entry.key: entry.value}.entries);
+    }
+  }
+  print("\nЗгенеровані слова з довжиною слова кратною двом: ");
+  tempNouns.forEach((key, value) {
+    print(key);
+  });
+}
