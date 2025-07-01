@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:math';
+
 import 'names.dart';
 
 void main() {
@@ -9,7 +12,37 @@ void main() {
   // runTask3();
 }
 
-void runTask1() {}
+void runTask1() {
+  List<int> numbers = List.generate(101, (index) => Random().nextInt(101));
+  print("\nМасив випадкових чисел: $numbers");
+
+  final nthNum = numbers[64];
+  print("\n65-й елемент: $nthNum");
+
+  numbers
+    ..insert(49, 1000000000)
+    ..removeWhere((e) => e == 24)
+    ..removeWhere((e) => e == 45)
+    ..removeWhere((e) => e == 66)
+    ..removeWhere((e) => e == 88);
+
+  int sumMultipleThree = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 3 == 0) {
+      sumMultipleThree += numbers[i];
+    }
+  }
+  print("Сума всіх елементів, що діляться на 3: $sumMultipleThree");
+
+  List<int> temp = [];
+  for (var element in numbers) {
+    if (element % 2 == 0) {
+      temp.add(element);
+    }
+  }
+  final lengthMultipleTwo = temp.length;
+  print("Кількість елементів, що діляться на 2: $lengthMultipleTwo");
+}
 
 void runTask2() {
   final uniqueNames1 = Set.from(ukrainianNames1);
