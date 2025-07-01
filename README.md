@@ -2,6 +2,7 @@
 
 This is git repository for Flutter Mobile Developer course - from Homework 08 and next
 
+
 ## Task 1: Списки (List)
 1. Створіть список numbers зі 100 елементів. Кожен елемент — випадкове число від 0 до 100 (використайте Random().nextInt(101)).
 2. Виведіть цей список на екран.
@@ -13,8 +14,6 @@ This is git repository for Flutter Mobile Developer course - from Homework 08 an
   * Виведіть результат.
 7. Створіть порожній список temp. За допомогою циклу for-in переберіть numbers. Додайте до temp лише ті елементи, що діляться на 2 без залишку.
 8. Виведіть довжину списку temp.
-
-
 
 
 ## Task 2: Множини (Set)
@@ -30,8 +29,6 @@ This is git repository for Flutter Mobile Developer course - from Homework 08 an
 8. Створіть новий Set зі спільними іменами обох списків. Виведіть кількість елементів у цій множині.
 9. Створіть множину з іменами, що є в uniqueNames1, але яких немає в uniqueNames2. Виведіть ці імена.
 10. Створіть множину з іменами, що є в uniqueNames2, але яких немає в uniqueNames1. Виведіть ці імена.
-
-
 
 
 ## Task 3: Словники (Map)
