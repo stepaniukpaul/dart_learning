@@ -4,26 +4,23 @@ import 'package:word_generator/word_generator.dart';
 import 'names.dart';
 
 void main() {
-  print("\n ------------------- Task 1 -------------------");
+  print('\n ------------------- Task 1 -------------------');
   runTask1();
-  print("\n ------------------- Task 2 -------------------");
+  print('\n ------------------- Task 2 -------------------');
   runTask2();
-  print("\n ------------------- Task 3 -------------------");
+  print('\n ------------------- Task 3 -------------------');
   runTask3();
 }
 
 void runTask1() {
   List<int> numbers = List.generate(101, (index) => Random().nextInt(101));
-  print("\nМасив випадкових чисел: $numbers");
+  print('\nМасив випадкових чисел: $numbers');
 
-  print("\n65-й елемент: ${numbers[64]}");
+  print('\n65-й елемент: ${numbers[64]}');
 
   numbers
     ..insert(49, 1000000000)
-    ..removeWhere((e) => e == 24)
-    ..removeWhere((e) => e == 45)
-    ..removeWhere((e) => e == 66)
-    ..removeWhere((e) => e == 88);
+    ..removeWhere((e) => [24, 45, 66, 88].contains(e));
 
   int sumMultipleThree = 0;
   for (var i = 0; i < numbers.length; i++) {
@@ -31,7 +28,7 @@ void runTask1() {
       sumMultipleThree += numbers[i];
     }
   }
-  print("Сума всіх елементів, що діляться на 3: $sumMultipleThree");
+  print('Сума всіх елементів, що діляться на 3: $sumMultipleThree');
 
   List<int> temp = [];
   for (var element in numbers) {
@@ -39,7 +36,7 @@ void runTask1() {
       temp.add(element);
     }
   }
-  print("Кількість елементів, що діляться на 2: ${temp.length}");
+  print('Кількість елементів, що діляться на 2: ${temp.length}');
 }
 
 void runTask2() {
@@ -48,34 +45,33 @@ void runTask2() {
 
   final intersectionNames = uniqueNames1.intersection(uniqueNames2);
   print(
-    "\nКількість спільних імен з двох списків: ${intersectionNames.length}",
+    '\nКількість спільних імен з двох списків: ${intersectionNames.length}',
   );
 
   final uniqueUkrainianNames1 = uniqueNames1.difference(uniqueNames2);
   print(
-    "\nУнікальні імена від ChatGPT: $uniqueUkrainianNames1 -- всього ${uniqueUkrainianNames1.length}",
+    '\nУнікальні імена від ChatGPT: $uniqueUkrainianNames1 -- всього ${uniqueUkrainianNames1.length}',
   );
 
   final uniqueUkrainianNames2 = uniqueNames2.difference(uniqueNames1);
   print(
-    "\nУнікальні імена від Gemini: $uniqueUkrainianNames2 -- всього ${uniqueUkrainianNames2.length}",
+    '\nУнікальні імена від Gemini: $uniqueUkrainianNames2 -- всього ${uniqueUkrainianNames2.length}',
   );
 
-  print("\nНе сходиться 😡 - роблю перевірку:");
-  print("Унікальних імен зі списку ChatGPT: ${uniqueNames1.length}");
-  print("Унікальних імен зі списку Gemini: ${uniqueNames2.length}");
-  print("\nВиходить що ChatGPT надав 50 імен, але зробив одне повторення 😐");
+  print('\nНе сходиться 😡 - роблю перевірку:');
+  print('Унікальних імен зі списку ChatGPT: ${uniqueNames1.length}');
+  print('Унікальних імен зі списку Gemini: ${uniqueNames2.length}');
+  print('\nВиходить що ChatGPT надав 50 імен, але зробив одне повторення 😐');
 }
 
 void runTask3() {
   final wordGenerator = WordGenerator();
-  List<String> nounsList = wordGenerator.randomNouns(50);
+  List<String> nounsList = wordGenerator.randomNouns(5);
 
   Map<String, int> nounsMap = {};
   for (final element in nounsList) {
     nounsMap.addEntries({element: element.length}.entries);
   }
-  // print(nounsMap);
 
   Map<String, int> tempNouns = {};
   for (final entry in nounsMap.entries) {
@@ -83,7 +79,7 @@ void runTask3() {
       tempNouns.addEntries({entry.key: entry.value}.entries);
     }
   }
-  print("\nЗгенеровані слова з довжиною слова кратною двом: ");
+  print('\nЗгенеровані слова з довжиною слова кратною двом: ');
   tempNouns.forEach((key, value) {
     print(key);
   });
