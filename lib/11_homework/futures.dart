@@ -112,9 +112,9 @@ Future<String> fetchAge() async {
 }
 
 Future<String> delayedCountdown(int seconds) async {
-  for (int i = seconds; i >= 0; i--) {
+  for (int i = seconds; i > 0; i--) {
+    print("$i...");
     await Future.delayed(Duration(milliseconds: 1000));
-    print(i);
   }
   return 'Start!';
 }
