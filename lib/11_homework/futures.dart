@@ -7,7 +7,7 @@ void main() {
 }
 
 void runTask1() async {
-  String name = await fetchName();
+  final name = await fetchName();
   print('\n ------------------- Task 1 -------------------');
   print('Мене звати $name');
 }
@@ -16,7 +16,7 @@ void runTask2() async {
   String age = await fetchAge();
   List<String> ageDigits = age.split('');
   String noun;
-  switch (ageDigits.last) {
+  switch (ageDigits.lastOrNull) {
     case '1':
       noun = 'рік';
     case '2':
@@ -36,7 +36,7 @@ void runTask3() async {
   final stopwatch = Stopwatch();
   stopwatch.start();
 
-  String name = await fetchName();
+  final name = await fetchName();
 
   stopwatch.stop();
 
@@ -50,7 +50,7 @@ void runTask3() async {
   String age = await fetchAge();
   List<String> ageDigits = age.split('');
   String noun;
-  switch (ageDigits.last) {
+  switch (ageDigits.lastOrNull) {
     case '1':
       noun = 'рік';
     case '2':
@@ -72,11 +72,11 @@ void runTask4() async {
   stopwatch.start();
 
   final data = await Future.wait([fetchName(), fetchAge()]);
-  String name = data[0];
+  final name = data[0];
   String age = data[1];
   List<String> ageDigits = age.split('');
   String noun;
-  switch (ageDigits.last) {
+  switch (ageDigits.lastOrNull) {
     case '1':
       noun = 'рік';
     case '2':
@@ -97,7 +97,7 @@ void runTask4() async {
 
 void runTask5() async {
   print('\n ------------------- Task 5 -------------------');
-  String countdown = await delayedCountdown(5);
+  final countdown = await delayedCountdown(5);
   print(countdown);
 }
 
